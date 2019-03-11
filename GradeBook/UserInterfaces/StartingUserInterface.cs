@@ -57,7 +57,7 @@ If the third substring's value doesn't match either of the above write the value
 
             else
             {
-                Console.WriteLine(parts[3] + " is not a supported type of gradebook, please try again");
+                Console.WriteLine(parts[2] + " is not a supported type of gradebook, please try again");
             }
 
             return;
