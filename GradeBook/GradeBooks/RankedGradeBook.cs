@@ -23,6 +23,7 @@ namespace GradeBook.GradeBooks
             }
 
             studentsAverages.Sort();
+            studentsAverages.Reverse();
 
             if (averageGrade >= studentsAverages[(int)Math.Ceiling((double)studentsAverages.Count / 5) - 1])
             {
