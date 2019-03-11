@@ -24,19 +24,19 @@ namespace GradeBook.GradeBooks
 
             studentsAverages.Sort();
 
-            if (averageGrade >= studentsAverages[(studentsAverages.Count / 5) - 1])
+            if (averageGrade >= studentsAverages[(int)Math.Ceiling((double)studentsAverages.Count / 5) - 1])
             {
                 return 'A';
             }
-            if (averageGrade >= studentsAverages[(studentsAverages.Count * 2 / 5) - 1])
+            if (averageGrade >= studentsAverages[(int)Math.Ceiling((double)studentsAverages.Count * 2 / 5) - 1])
             {
                 return 'B';
             }
-            if (averageGrade >= studentsAverages[(studentsAverages.Count * 3 / 5) - 1])
+            if (averageGrade >= studentsAverages[(int)Math.Ceiling((double)studentsAverages.Count * 3 / 5) - 1])
             {
                 return 'C';
             }
-            if (averageGrade >= studentsAverages[(studentsAverages.Count * 4 / 5) - 1])
+            if (averageGrade >= studentsAverages[(int)Math.Ceiling((double)studentsAverages.Count * 4 / 5) - 1])
             {
                 return 'D';
             }
