@@ -25,16 +25,23 @@ namespace GradeBook.GradeBooks
             studentsAverages.Sort();
 
             if (averageGrade >= studentsAverages[(studentsAverages.Count / 5) - 1])
+            {
                 return 'A';
-            else if (averageGrade >= studentsAverages[((studentsAverages.Count * 2) / 5) - 1])
+            }
+            if (averageGrade >= studentsAverages[(studentsAverages.Count * 2 / 5) - 1])
+            {
                 return 'B';
-            else if (averageGrade >= studentsAverages[((studentsAverages.Count * 3) / 5) - 1])
+            }
+            if (averageGrade >= studentsAverages[(studentsAverages.Count * 3 / 5) - 1])
+            {
                 return 'C';
-            else if (averageGrade >= studentsAverages[((studentsAverages.Count * 4) / 5) - 1])
+            }
+            if (averageGrade >= studentsAverages[(studentsAverages.Count * 4 / 5) - 1])
+            {
                 return 'D';
-            else
-            return 'F';
+            }
 
+                return 'F';
         }
 
     }
