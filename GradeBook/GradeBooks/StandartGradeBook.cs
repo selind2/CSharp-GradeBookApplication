@@ -5,6 +5,7 @@ namespace GradeBook.GradeBooks
     {
         public StandartGradeBook(string name) : base(name)
         {
-        }
+            Type = Enums.GradeBookType.Standard;
+        } 
     }
 }
