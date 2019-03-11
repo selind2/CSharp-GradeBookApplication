@@ -14,11 +14,13 @@ namespace GradeBook.GradeBooks
         public string Name { get; set; }
         public List<Student> Students { get; set; }
         public GradeBookType Type { get; set; }
+        public bool isWeighted;
 
-        public BaseGradeBook(string name)
+        public BaseGradeBook(string name, bool weighted)
         {
             Name = name;
             Students = new List<Student>();
+            isWeighted = weighted;
         }
 
         public void AddStudent(Student student)
@@ -107,20 +109,29 @@ namespace GradeBook.GradeBooks
 
         public virtual double GetGPA(char letterGrade, StudentType studentType)
         {
-            switch (letterGrade)
+            var GPA = 0;
+
+         switch (letterGrade)
             {
                 case 'A':
-                    return 4;
+                    GPA += 4;
+                    return GPA;
                 case 'B':
-                    return 3;
+                    GPA += 3;
+                    return GPA;
                 case 'C':
-                    return 2;
+                    GPA += 2;
+                    return GPA;
                 case 'D':
-                    return 1;
+                    GPA += 1;
+                    return GPA;
                 case 'F':
-                    return 0;
+                    return GPA;
             }
-            return 0;
+            if(isWeighted && (studentType == StudentType.Honors || studentType == StudentType.DualEnrolled))
+                { GPA += 1; }
+
+            return GPA;
         }
 
         public virtual void CalculateStatistics()
@@ -269,3 +280,21 @@ namespace GradeBook.GradeBooks
         }
     }
 }
+
+
+
+
+/* 
+
+Update BaseGradeBook's GetGPA Method
+
+BaseGradeBook's GetGPA method returns an int based on the student's letter grade 
+(their GPA or Grade Point Average).
+When a grade book's IsWeighted property is true and the student type is Honors or DualEnrolled, add 1 to the GPA before returning it.
+
+An unweighted A is worth 4 points.
+A weighted A is worth 5 points.
+An unweighted B is worth 3 points.
+A weighted B is worth 4 points and so on.
+
+*/
