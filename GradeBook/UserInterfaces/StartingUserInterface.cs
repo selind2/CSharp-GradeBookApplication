@@ -34,15 +34,33 @@ namespace GradeBook.UserInterfaces
         public static void CreateCommand(string command)
         {
             var parts = command.Split(' ');
-            if (parts.Length != 2)
+            if (parts.Length != 3)
             {
-                Console.WriteLine("Command not valid, Create requires a name.");
+                Console.WriteLine("Command not valid, Create requires a name and type of gradebook.".);
                 return;
             }
             var name = parts[1];
-            BaseGradeBook gradeBook = new BaseGradeBook(name);
-            Console.WriteLine("Created gradebook {0}.", name);
-            GradeBookUserInterface.CommandLoop(gradeBook);
+
+
+            /* If the third substring's value is "standard" set gradeBook to a new instantiation of StandardGradeBook.
+If the third substring's value is "ranked" set gradeBook to a new instantiation of RankedGradeBook.
+If the third substring's value doesn't match either of the above write the value the user entered followed by " is not a supported type of gradebook, please try again" then escape the method.*/
+
+            var tip = parts[2];
+            if(tip == "Standard")
+            { StandardGradeBook gradeBook = new StandardGradeBook(name); 
+            }
+
+            else if(tip == "Ranked")
+            { RankedGradeBook gradeBook = new RankedGradeBook(name);
+            }
+
+            else
+            {
+                Console.WriteLine(parts[3] + " is not a supported type of gradebook, please try again");
+            }
+
+            return;
         }
 
         public static void LoadCommand(string command)
